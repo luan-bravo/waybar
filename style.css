@@ -1,0 +1,157 @@
+/* 
+* Waybar config forked from ...'s on github by luan-bravo. It uses the
+* selected gtk-3.0 theme available in `/usr/share/themes/`, in my case,
+* the `gruvbox-dark-gtk/`.
+*/
+/* TODO: Figure out how to let the LSP know that it's all fine and that @defined colors can actually be found */
+/* @import url("/usr/share/themes/gruvbox-dark-gtk/gtk-3.20/dist/gtk-dark.css"); */
+* {
+    min-height: 0;
+    font-family: Hack Nerd Font;
+    font-weight: 800;
+    font-size: 16px;
+    border: none;
+}
+
+tooltip {
+    border-radius: 4px;
+    border: 2px solid @theme_text_color;
+}
+
+.modules-left,
+.modules-middle,
+.modules-right {
+    margin: 0 0.5rem;
+}
+
+/* set default for all modules */
+.module {
+    background: @theme_bg_color;
+    color: @theme_text_color;
+    /* border-radius: 4px; */
+    border-radius: 0;
+    border-left: 1px solid @theme_text_color;
+    border-right: 1px solid @theme_text_color;
+    border-top: 0.2rem solid @theme_text_color;
+    border-bottom: 0.2rem solid @theme_text_color;
+    padding: 0.1rem 0.5rem;
+    margin: 0.1rem 0.0rem;
+}
+
+widget:last-child > .module {
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    border-right: 0.2rem solid @theme_text_color;
+}
+widget:first-child > .module {
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+    border-left: 0.2rem solid @theme_text_color;
+}
+
+/* #battery defaults to .module styles */
+#battery.charging {
+    color: @success_color;
+    border-color: @success_color;
+}
+#battery.plugged:not(.charging) {
+    color: @link_color;
+    border-color: @link_color;
+}
+@keyframes critical_battery {
+    to {
+        background: @error_color;
+        color: @theme_bg_color;
+    }
+}
+/* #battery.critical:not(.charging) { */
+#battery.critical:not(.charging){
+    color: @error_color;
+    border-color: @error_color;
+    animation-name: critical_battery;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(30);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes warning_battery {
+    to {
+        background: @warning_color;
+        color: @theme_bg_color;
+    }
+}
+/* #battery.warning:not(.charging) { */
+#battery.warning.discharging {
+    color: @warning_color;
+    border-color: @warning_color;
+    animation-name: warning_battery;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(30);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* #custom-playerctl {} */
+#custom-playerctl.Playing {
+    min-width: 0;
+}
+
+window#waybar {
+    background: none;
+}
+window#waybar.solo {
+    background: @theme_bg_color;
+}
+window#waybar.fullscreen {
+    background: @theme_text_color;
+}
+window#waybar.special {
+    background: @success_color;
+}
+/* window#waybar.brave { */
+/*     background: orange; */
+/* } */
+/* window#waybar.empty #window { */
+/*     background: transparent; */
+/* } */
+
+#workspaces button {
+    border: none;
+    transition-duration: 0.1s;
+    background: none;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    padding: 0.2rem;
+    color: @theme_selected_bg_color;
+}
+#workspaces button:hover {
+    color: @warning_color;
+}
+/* Colors set to better suit not having any workspace label persistent */
+#workspaces button.special,
+#workspaces button.empty {
+    color: @theme_text_color;
+}
+#workspaces button.visible,
+#workspaces button.active {
+    color: @success_color;
+}
+#workspaces button.urgent {
+    color: @error_color;
+}
+/* #workspaces button.persistent { */
+/*     color: @theme_selected_bg_color; */
+/* } */
+
+/* #language, */
+/* #custom-updates, */
+/* #custom-weather, */
+/* #clock, */
+/* #pulseaudio, */
+/* #network, */
+/* #tray, */
+/* #cava, */
+/* #keyboard-state, */
+/* #idle_inhibitor, */
+/* #custom-power, */
+/* #temperature */

@@ -1,0 +1,238 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mode": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "ipc": false,
+    "reload_style_on_change": true,
+    "height": 0,
+    "modules-left": [
+        "idle_inhibitor",
+        "clock",
+        "custom/weather",
+        "backlight",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "custom/playerctl",
+        "cava",
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "hyprland/window",
+        "tray", // ?
+        // "hyprland/language", // TODO: display US Intl layout change
+        "temperature",
+        // TODO: add bluetooth
+        "network",
+        "battery",
+        "custom/power"
+    ],
+
+    // Modules Left //
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+    "clock": {
+        "locale": "en_US.UTF-8",
+        "timezone": "Brazil/East",
+        "format": "{:L%R %a}",
+        "tooltip-format": "<span font='Hasklug Nerd Font 11'><tt><small>{calendar}</small></tt></span>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "format": {
+                "months":     "<span color='#504945'><b>{}</b></span>",
+                "days":       "<span color='#ebdbb2'><b>{}</b></span>",
+                "weeks":      "<span color='#928374'><b>W{}</b></span>",
+                "weekdays":   "<span color='#7c6f64'><b>{}</b></span>",
+                "today":      "<span color='#d79921'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    "custom/weather": {
+        "format": "{}°",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "wttrbar --nerd --location florianopolis",
+        "return-type": "json",
+        "class": "red",
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        // TODO: fix percentage according to brightnessctl
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "tooltip": false,
+        "format-muted": " {volume}%",
+        "on-click": "pamixer -t",
+        "on-scroll-up": "pamixer -i 2",
+        "on-scroll-down": "pamixer -d 2",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "tooltip": false,
+        "format-source-muted": " {volume}%",
+        "on-click": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 2",
+        "on-scroll-down": "pamixer --default-source -d 2",
+        "scroll-step": 5
+    },
+    "custom/playerctl": {
+        "format": "{2} <span>{0}</span>",
+        "return-type": "json",
+        // "exec": "playerctl -p spotify metadata -f '{\"text\": \"{{markup_escape(title)}} - {{markup_escape(artist)}}  {{ duration(position) }}/{{ duration(mpris:length) }}\", \"tooltip\": \"{{markup_escape(title)}} - {{markup_escape(artist)}}  {{ duration(position) }}/{{ duration(mpris:length) }}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "exec": "playerctl  metadata -f '{\"text\": \"{{ duration(position) }}/{{ duration(mpris:length) }}\", \"tooltip\": \"{{markup_escape(title)}} - {{markup_escape(artist)}}  {{ duration(position) }}/{{ duration(mpris:length) }}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "tooltip": true,
+        "on-click-middle": "playerctl previous",
+        "on-click": "playerctl play-pause",
+        // "on-click-right": "playerctl next",
+        // "on-click-forward": "playerctl position 10+",
+        // "on-click-backward": "playerctl position 10-",
+        // "on-scroll-up": "playerctl volume 0.02+",
+        // "on-scroll-down": "playerctl volume 0.02-",
+        "format-icons": {
+            "Paused": "",
+            "Playing": ""
+        }
+    },
+    "cava": {
+        // "cava_config": "$HOME/.config/cava/config",
+        "framerate": 60,
+        "autosens": 0,
+        "sensitivity": 25,
+        "bars": 10,
+        "lower_cutoff_freq": 60,
+        "higher_cutoff_freq": 9000,
+        "method": "pipewire",
+        "hide_on_silence": false,
+        "sleep_timer": 5,
+        "source": "auto",
+        "stereo": false,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.5,
+        "input_delay": 0,
+        "format": "{icon}",
+        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+            "on-click-right": "mode"
+        }
+    },
+    // Modules Center //
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "show-special": true,
+        "on-scroll-up": "hyprctl dispatch workspace m-1",
+        "on-scroll-down": "hyprctl dispatch workspace m+1",
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            // "urgent": "",
+            "default": "󰐗",
+            "magic": "󰓏"
+        },
+        "sort-by-number": true
+    },
+    // Modules Right //
+    "hyprland/window": {
+        "format": "{title}"
+    },
+    "tray": {
+        "icon-size": 12,
+        "spacing": 8
+    },
+    // "hyprland/language": {
+    //     "format": "{}",
+    //     "format-en": "US",
+    // TODO: fix this inter us layout toggling display
+    //     "format-en": "Inter",
+    // },
+
+
+    "temperature": {
+        // "thermal-zone": ,
+        "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C ",
+        "format-critical": "{temperatureC}°C ",
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{signalStrength}%  ",
+        "format-ethernet": "{ipaddr}/{cidr}  ",
+        "tooltip-format": "{essid} - {ifname} via {gwaddr}  ",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": "Disconnected ⚠ ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{capacity}% {icon} ",
+        "format-full": "{capacity}% {icon} ",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "{capacity}%  ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+
+    "custom/power": {
+        "format": " ",
+        "tooltip": false,
+        "on-click": "wlogout -b 5 --protocol layer-shell"
+        // "menu-actions": {
+        //     "shutdown": "shutdown",
+        //     "reboot": "reboot",
+        //     "suspend": "systemctl suspend now",
+        //     "hibernate": "systemctl hibernate now"
+        // }
+    },
+}
