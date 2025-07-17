@@ -7,7 +7,7 @@
 /* @import url("/usr/share/themes/gruvbox-dark-gtk/gtk-3.20/dist/gtk-dark.css"); */
 * {
     min-height: 0;
-    font-family: Hack Nerd Font;
+    font-family: Hasklug Nerd Font;
     font-weight: 800;
     font-size: 16px;
     border: none;
@@ -143,6 +143,10 @@ window#waybar.special {
 /*     color: @theme_selected_bg_color; */
 /* } */
 
+#cava {
+    padding: 0;
+}
+
 /* #language, */
 /* #custom-updates, */
 /* #custom-weather, */
@@ -150,7 +154,6 @@ window#waybar.special {
 /* #pulseaudio, */
 /* #network, */
 /* #tray, */
-/* #cava, */
 /* #keyboard-state, */
 /* #idle_inhibitor, */
 /* #custom-power, */
