@@ -9,7 +9,7 @@
     min-height: 0;
     font-family: Hack Nerd Font;
     font-weight: 800;
-    /* font-size: 14px; */
+    /* font-size: 12px; */
     border: none;
 }
 
@@ -34,7 +34,7 @@ tooltip {
     border-right: 1px solid @theme_text_color;
     border-top: 0.2em solid @theme_text_color;
     border-bottom: 0.2em solid @theme_text_color;
-    padding: 0.2em 0.4em;
+    padding: 0 0.4em;
 }
 
 widget:last-child > .module {
@@ -58,10 +58,10 @@ widget:first-child > .module {
     border-color: @link_color;
 }
 @keyframes critical_battery {
-to {
-    background: @error_color;
-    color: @theme_bg_color;
-}
+    to {
+        background: @error_color;
+        color: @theme_bg_color;
+    }
 }
 /* #battery.critical:not(.charging) { */
 #battery.critical:not(.charging){
@@ -74,10 +74,10 @@ to {
     animation-direction: alternate;
 }
 @keyframes warning_battery {
-to {
-    background: @warning_color;
-    color: @theme_bg_color;
-}
+    to {
+        background: @warning_color;
+        color: @theme_bg_color;
+    }
 }
 /* #battery.warning:not(.charging) { */
 #battery.warning.discharging {
@@ -120,7 +120,6 @@ window#waybar.special {
     background: none;
     box-shadow: inherit;
     text-shadow: inherit;
-    padding: 0 0.1em;
     color: @theme_selected_bg_color;
 }
 #workspaces button:hover {
