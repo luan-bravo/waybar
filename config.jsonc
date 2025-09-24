@@ -43,7 +43,7 @@
     "clock": {
         "locale": "en_US.UTF-8",
         "timezone": "Brazil/East",
-        "format": "{:L%R %a}",
+        "format": "{:L%a %R}",
         "tooltip-format": "<span font='Hasklug Nerd Font 11'><tt><small>{calendar}</small></tt></span>",
         "calendar": {
             "mode": "year",
@@ -70,7 +70,7 @@
     "backlight": {
         // "device": "acpi_video1",
         // TODO: fix percentage according to brightnessctl
-        "format": "{percent}% {icon}",
+        "format": "{icon} {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
 
