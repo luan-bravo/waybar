@@ -63,8 +63,7 @@ widget:first-child > .module {
         color: @theme_bg_color;
     }
 }
-/* #battery.critical:not(.charging) { */
-#battery.critical:not(.charging){
+#battery.critical:not(.charging) {
     color: @error_color;
     border-color: @error_color;
     animation-name: critical_battery;
@@ -79,8 +78,7 @@ widget:first-child > .module {
         color: @theme_bg_color;
     }
 }
-/* #battery.warning:not(.charging) { */
-#battery.warning.discharging {
+#battery.warning:not(.charging) {
     color: @warning_color;
     border-color: @warning_color;
     animation-name: warning_battery;
