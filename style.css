@@ -54,8 +54,8 @@ widget:first-child > .module {
     border-color: @success_color;
 }
 #battery.plugged:not(.charging) {
-    color: @link_color;
-    border-color: @link_color;
+    color: @theme_selected_bg_color;
+    border-color: @theme_selected_bg_color;
 }
 @keyframes critical_battery {
     to {
