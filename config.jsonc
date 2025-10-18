@@ -16,7 +16,6 @@
         "pulseaudio",
         "pulseaudio#microphone",
         "custom/playerctl",
-        "cava",
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -119,31 +118,6 @@
         "format-icons": {
             "Paused": "",
             "Playing": ""
-        }
-    },
-    "cava": {
-        // "cava_config": "$HOME/.config/cava/config",
-        "framerate": 60,
-        "autosens": 0,
-        "sensitivity": 25,
-        "bars": 10,
-        "lower_cutoff_freq": 60,
-        "higher_cutoff_freq": 9000,
-        "method": "pipewire",
-        "hide_on_silence": false,
-        "sleep_timer": 5,
-        "source": "auto",
-        "stereo": false,
-        "reverse": false,
-        "bar_delimiter": 0,
-        "monstercat": false,
-        "waves": false,
-        "noise_reduction": 0.5,
-        "input_delay": 0,
-        "format": "{icon}",
-        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-        "actions": {
-            "on-click-right": "mode"
         }
     },
     // Modules Center //
